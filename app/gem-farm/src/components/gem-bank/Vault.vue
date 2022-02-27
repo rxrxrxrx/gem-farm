@@ -1,6 +1,6 @@
 <template>
   <!--control buttons-->
-  <div class="mb-10 flex justify-center">
+  <div class="mb-10 flex justify-center is-dark">
     <button
       v-if="
         (toWalletNFTs && toWalletNFTs.length) ||
@@ -9,7 +9,7 @@
       class="nes-btn is-primary mr-5"
       @click="moveNFTsOnChain"
     >
-      Move Gems!
+      Move Mekamounts!
     </button>
     <slot />
   </div>
@@ -19,7 +19,7 @@
     <!--left-->
     <NFTGrid
       title="Your wallet"
-      class="flex-1"
+      class="flex-1 is-dark"
       :nfts="desiredWalletNFTs"
       @selected="handleWalletSelected"
     />
@@ -42,8 +42,8 @@
     <!--right-->
     <NFTGrid
       v-if="bank && vault"
-      title="Your vault"
-      class="flex-1"
+      title="Your Mekamounts"
+      class="flex-1 is-dark"
       :nfts="desiredVaultNFTs"
       @selected="handleVaultSelected"
     >
@@ -51,7 +51,7 @@
         v-if="vaultLocked"
         class="locked flex-col justify-center items-center align-center"
       >
-        <p class="mt-10">This vault is locked!</p>
+        <p class="mt-10">Mekamounts locked!</p>
       </div>
     </NFTGrid>
   </div>

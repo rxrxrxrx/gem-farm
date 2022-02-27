@@ -1,7 +1,7 @@
 <template>
   <button :disabled="disabled">
     <img
-      src="../assets/play.png"
+      src="../assets/play2.png"
       alt="right"
       :width="60"
       :height="60"

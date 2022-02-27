@@ -4,18 +4,18 @@ import Manager from '@/views/Manager.vue';
 import Home from '@/views/Home.vue';
 
 const routes: Array<RouteRecordRaw> = [
-  {
+ /* {
     path: '/',
     name: 'Home',
     component: Home,
-  },
+  },*/
   {
     path: '/manager',
     name: 'Farm Manager',
     component: Manager,
   },
   {
-    path: '/farmer',
+    path: '/',
     name: 'Farmer',
     component: Farmer,
   },

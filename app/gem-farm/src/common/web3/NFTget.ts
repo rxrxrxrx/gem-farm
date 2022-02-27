@@ -30,6 +30,8 @@ async function getTokensByOwner(owner: PublicKey, conn: Connection) {
     });
 }
 
+const WHITELIST_CREATORS_ADDRESS = "FHEApgfGa3xX74rKST4Ztvc62oj1Y1yan6hTKH2cwbdd";
+
 async function getNFTMetadata(
   mint: string,
   conn: Connection,
@@ -39,6 +41,8 @@ async function getNFTMetadata(
   try {
     const metadataPDA = await Metadata.getPDA(mint);
     const onchainMetadata = (await Metadata.load(conn, metadataPDA)).data;
+    const creators = onchainMetadata.data.creators || [];
+    if (creators.find(c => c.address === WHITELIST_CREATORS_ADDRESS)) {
     const externalMetadata = (await axios.get(onchainMetadata.data.uri)).data;
     return {
       pubkey: pubkey ? new PublicKey(pubkey) : undefined,
@@ -46,6 +50,7 @@ async function getNFTMetadata(
       onchainMetadata,
       externalMetadata,
     };
+  }
   } catch (e) {
     console.log(`failed to pull metadata for token ${mint}`);
   }

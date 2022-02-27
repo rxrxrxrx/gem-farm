@@ -1,15 +1,15 @@
 <template>
   <ConfigPane />
-  <div v-if="!wallet" class="text-center">Pls connect (burner) wallet</div>
+  <div v-if="!wallet" class="text-center"></div>
   <div v-else>
     <!--farm address-->
-    <div class="nes-container with-title mb-10">
+    <!--<div class="nes-container with-title mb-10">
       <p class="title">Connect to a Farm</p>
       <div class="nes-field mb-5">
         <label for="farm">Farm address:</label>
         <input id="farm" class="nes-input" v-model="farm" />
       </div>
-    </div>
+    </div>-->
 
     <div v-if="farmerAcc">
       <FarmerDisplay
@@ -32,7 +32,7 @@
           class="nes-btn is-primary mr-5"
           @click="addGems"
         >
-          Add Gems (resets staking)
+          Add Mekamounts
         </button>
         <button
           v-if="farmerState === 'unstaked'"
@@ -43,30 +43,29 @@
         </button>
         <button
           v-if="farmerState === 'staked'"
-          class="nes-btn is-error mr-5"
+          class="nes-btn is-primary mr-5"
           @click="endStaking"
         >
           End staking
         </button>
         <button
           v-if="farmerState === 'pendingCooldown'"
-          class="nes-btn is-error mr-5"
+          class="nes-btn is-primary mr-5"
           @click="endStaking"
         >
           End cooldown
         </button>
-        <button class="nes-btn is-warning" @click="claim">
-          Claim {{ availableA }} A / {{ availableB }} B
+        <button class="nes-btn is-success" @click="claim">
+          Claim $MEKA
         </button>
       </Vault>
     </div>
     <div v-else>
       <div class="w-full text-center mb-5">
-        Farmer account not found :( Create a new one?
       </div>
       <div class="w-full text-center">
         <button class="nes-btn is-primary" @click="initFarmer">
-          New Farmer
+          Create your Staking Account
         </button>
       </div>
     </div>
@@ -102,7 +101,7 @@ export default defineComponent({
     });
 
     // --------------------------------------- farmer details
-    const farm = ref<string>();
+    const farm = ref<string>("Bb82rHciYLRTCVWg1Wu6tn1akajwZ4RySnQSTn1o1HiQ");
     const farmAcc = ref<any>();
 
     const farmerIdentity = ref<string>();
